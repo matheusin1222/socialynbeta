@@ -161,6 +161,24 @@ postContent.addEventListener('input',()=>{postContent.style.height='auto';postCo
 const handleLike=async(postId,likes)=>{const isLiked=likes.includes(currentUser.uid);const postRef=doc(postsCollection,postId);await updateDoc(postRef,{likes:isLiked?arrayRemove(currentUser.uid):arrayUnion(currentUser.uid)});};
 const handleDeletePost = async (postId) => { await deleteDoc(doc(postsCollection, postId)); };
 const handleComment=async(postId,inputElement)=>{const text=inputElement.value.trim();if(!text)return;const commentsRef=collection(db,'posts',postId,'comments');await addDoc(commentsRef,{authorId:currentUser.uid,authorName:currentUser.name,authorAvatar:currentUser.avatar,text:text,timestamp:serverTimestamp()});await runTransaction(db,async(t)=>{const postRef=doc(postsCollection,postId);const postDoc=await t.get(postRef);t.update(postRef,{commentCount:(postDoc.data().commentCount||0)+1});});inputElement.value='';};
+// Função para lidar com o upload e criar post
+const handleCreatePost = async (text, imageFile) => {
+    let imageUrl = null;
+    
+    if (imageFile) {
+        const storageRef = ref(storage, `posts/${Date.now()}_${imageFile.name}`);
+        const snapshot = await uploadBytes(storageRef, imageFile);
+        imageUrl = await getDownloadURL(snapshot.ref);
+    }
+
+    await addDoc(postsCollection, {
+        text: text,
+        imageUrl: imageUrl,
+        authorId: auth.currentUser.uid,
+        timestamp: serverTimestamp(),
+        likes: []
+    });
+};
 
 // --- SEARCH ---
 searchForm.addEventListener('submit',async(e)=>{e.preventDefault();const searchTerm=searchInput.value.trim();if(!searchTerm)return;const q=query(usersCollection,where('name','>=',searchTerm),where('name','<=',searchTerm+'\uf8ff'));const querySnapshot=await getDocs(q);const results=querySnapshot.docs.map(doc=>({id:doc.id,...doc.data()})).filter(user=>user.id!==currentUser.uid);renderSearchResults(results);openModal(modals.searchResults);});
