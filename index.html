@@ -158,6 +158,13 @@
             <div id="main-content-area" class="col-span-5">
                 <div id="post-creation-area" class="bg-white p-4 rounded-lg shadow-md mb-6">
                     <form id="create-post-form">
+                        <input type="file" id="post-image-input" class="hidden" accept="image/*">
+<button type="button" onclick="document.getElementById('post-image-input').click()" class="text-gray-500 hover:text-red-600">
+    <i class="fa-solid fa-image"></i> Adicionar Foto
+</button>
+<div id="image-preview" class="mt-2 hidden">
+    <img id="preview-img" src="" class="h-32 rounded-lg border">
+</div>
                         <textarea id="post-content" class="w-full border-0 p-2 text-lg focus:ring-0" rows="1" placeholder="Compartilhe uma novidade..."></textarea>
                         <div class="flex items-center mt-3 pt-3 border-t">
                             <div class="flex-1">
