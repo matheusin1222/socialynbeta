@@ -1,28 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Socialy</title>
+    <title>Socialy - Beta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-<script type="importmap">
-{
-  "imports": {
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "path": "https://esm.sh/path@^0.12.7"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "vite": "https://esm.sh/vite@^7.3.1",
+        "path": "https://esm.sh/path@^0.12.7"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-gray-200 font-sans">
 
-    <!-- Auth Container -->
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-0 shadow-sm" role="alert">
+        <p class="font-bold">Versão Beta (Ambiente de Testes)</p>
+        <p>Esta versão pode apresentar instabilidades e bugs. Estamos a testar novas funcionalidades neste link específico.</p>
+    </div>
+
     <div id="auth-container" class="flex min-h-screen">
-        <!-- Left Side: Visuals & Branding -->
         <div class="hidden lg:flex flex-col justify-center items-center w-1/2 bg-cover bg-center text-white p-12" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop');">
             <div class="bg-black bg-opacity-40 p-10 rounded-lg text-center backdrop-blur-sm">
                 <img src="https://i.ibb.co/N6MFvyJM/testeee.png" alt="Socialy Logo" class="h-20 mx-auto mb-4">
@@ -31,7 +33,6 @@
             </div>
         </div>
 
-        <!-- Right Side: Auth Forms -->
         <div class="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 bg-gray-100">
             <div class="w-full max-w-md">
                 <div class="bg-white rounded-lg shadow-xl p-8">
@@ -39,21 +40,41 @@
                         <button id="login-tab" class="auth-tab auth-tab-active flex-1 py-2 font-semibold">Entrar</button>
                         <button id="signup-tab" class="auth-tab flex-1 py-2 font-semibold">Cadastrar-se</button>
                     </div>
-                    <!-- Login Form -->
                     <form id="login-form">
-                        <div class="mb-4"><label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">E-mail</label><input type="email" id="login-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></div>
-                        <div class="mb-6"><label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Senha</label><input type="password" id="login-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required></div>
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-gray-700 text-sm font-bold mb-2">E-mail</label>
+                            <input type="email" id="login-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="login-password" class="block text-gray-700 text-sm font-bold mb-2">Senha</label>
+                            <input type="password" id="login-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required>
+                        </div>
                         <p id="auth-error" class="text-red-500 text-xs italic mb-4 hidden"></p>
-                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 flex items-center justify-center"><span class="button-text">Entrar</span><i class="fas fa-spinner fa-spin button-loader hidden"></i></button>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 flex items-center justify-center">
+                            <span class="button-text">Entrar</span>
+                            <i class="fas fa-spinner fa-spin button-loader hidden"></i>
+                        </button>
                     </form>
-                    <!-- Signup Form -->
                     <form id="signup-form" class="hidden">
                         <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                            <div class="w-full sm:w-1/2"><label for="signup-firstname" class="block text-gray-700 text-sm font-bold mb-2">Nome</label><input type="text" id="signup-firstname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></div>
-                            <div class="w-full sm:w-1/2"><label for="signup-lastname" class="block text-gray-700 text-sm font-bold mb-2">Sobrenome</label><input type="text" id="signup-lastname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></div>
+                            <div class="w-full sm:w-1/2">
+                                <label for="signup-firstname" class="block text-gray-700 text-sm font-bold mb-2">Nome</label>
+                                <input type="text" id="signup-firstname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            </div>
+                            <div class="w-full sm:w-1/2">
+                                <label for="signup-lastname" class="block text-gray-700 text-sm font-bold mb-2">Sobrenome</label>
+                                <input type="text" id="signup-lastname" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            </div>
                         </div>
-                        <div class="mb-4"><label for="signup-email" class="block text-gray-700 text-sm font-bold mb-2">E-mail</label><input type="email" id="signup-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required></div>
-                        <div class="mb-4"><label for="signup-password" class="block text-gray-700 text-sm font-bold mb-2">Senha</label><input type="password" id="signup-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required><p class="text-xs text-gray-500 mt-1">A senha deve ter no mínimo 6 caracteres.</p></div>
+                        <div class="mb-4">
+                            <label for="signup-email" class="block text-gray-700 text-sm font-bold mb-2">E-mail</label>
+                            <input type="email" id="signup-email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="signup-password" class="block text-gray-700 text-sm font-bold mb-2">Senha</label>
+                            <input type="password" id="signup-password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required>
+                            <p class="text-xs text-gray-500 mt-1">A senha deve ter no mínimo 6 caracteres.</p>
+                        </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2">Data de Nascimento</label>
                             <div class="flex gap-2">
@@ -70,7 +91,10 @@
                              </div>
                         </div>
                         <p id="signup-auth-error" class="text-red-500 text-xs italic mb-4 hidden"></p>
-                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 flex items-center justify-center"><span class="button-text">Cadastrar</span><i class="fas fa-spinner fa-spin button-loader hidden"></i></button>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-all duration-300 flex items-center justify-center">
+                            <span class="button-text">Cadastrar</span>
+                            <i class="fas fa-spinner fa-spin button-loader hidden"></i>
+                        </button>
                     </form>
                 </div>
                 <p class="text-center text-gray-500 text-xs mt-6">&copy;2026 Yuki. Todos os direitos reservados.</p>
@@ -78,7 +102,6 @@
         </div>
     </div>
 
-    <!-- Main App Container -->
     <div id="main-app" class="hidden">
         <header class="bg-white shadow-md sticky top-0 z-20">
             <div class="container mx-auto px-6 py-2 flex justify-between items-center">
@@ -137,8 +160,16 @@
                     <form id="create-post-form">
                         <textarea id="post-content" class="w-full border-0 p-2 text-lg focus:ring-0" rows="1" placeholder="Compartilhe uma novidade..."></textarea>
                         <div class="flex items-center mt-3 pt-3 border-t">
-                            <div class="flex-1"><label for="community-select" class="text-xs text-gray-500">Publicar em:</label><select id="community-select" class="text-sm border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500 w-full mt-1"><option value="main">Feed Principal</option></select></div>
-                            <button id="post-submit-button" type="submit" class="ml-4 bg-red-600 text-white font-bold py-2 px-6 rounded-md hover:bg-red-700 transition-all duration-300 flex items-center justify-center w-28"><span class="button-text">Publicar</span><i class="fas fa-spinner fa-spin button-loader hidden"></i></button>
+                            <div class="flex-1">
+                                <label for="community-select" class="text-xs text-gray-500">Publicar em:</label>
+                                <select id="community-select" class="text-sm border-gray-300 rounded-md focus:ring-red-500 focus:border-red-500 w-full mt-1">
+                                    <option value="main">Feed Principal</option>
+                                </select>
+                            </div>
+                            <button id="post-submit-button" type="submit" class="ml-4 bg-red-600 text-white font-bold py-2 px-6 rounded-md hover:bg-red-700 transition-all duration-300 flex items-center justify-center w-28">
+                                <span class="button-text">Publicar</span>
+                                <i class="fas fa-spinner fa-spin button-loader hidden"></i>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -148,17 +179,82 @@
             </div>
 
             <aside class="col-span-3 space-y-6">
-                 <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="font-bold mb-4 text-gray-700">Assuntos do momento</h3><ul id="trending-topics-list" class="space-y-2"></ul></div>
-                 <div class="bg-white p-4 rounded-lg shadow-md"><h3 class="font-bold mb-3 text-gray-700">Talvez você goste</h3><div id="user-suggestions-list" class="space-y-3"></div></div>
+                 <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="font-bold mb-4 text-gray-700">Assuntos do momento</h3>
+                    <ul id="trending-topics-list" class="space-y-2"></ul>
+                 </div>
+                 <div class="bg-white p-4 rounded-lg shadow-md">
+                    <h3 class="font-bold mb-3 text-gray-700">Talvez você goste</h3>
+                    <div id="user-suggestions-list" class="space-y-3"></div>
+                 </div>
             </aside>
         </main>
     </div>
 
-    <!-- Modals -->
-    <div id="edit-profile-modal" class="modal-overlay hidden"><div class="modal-content"><h3 class="text-lg font-bold mb-4">Editar Perfil</h3><form id="edit-profile-form"><div class="mb-4"><label for="edit-name" class="block text-sm font-medium text-gray-700">Nome</label><input type="text" id="edit-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500"></div><div class="mb-4"><label for="edit-avatar" class="block text-sm font-medium text-gray-700">URL do Avatar</label><input type="text" id="edit-avatar" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500"></div><div class="mb-4"><label for="edit-bio" class="block text-sm font-medium text-gray-700">Bio</label><textarea id="edit-bio" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"></textarea></div><div class="flex justify-end gap-3 mt-6"><button type="button" class="modal-close-button secondary-button">Cancelar</button><button type="submit" class="primary-button">Salvar</button></div></form></div></div>
-    <div id="search-results-modal" class="modal-overlay hidden"><div class="modal-content"><h3 class="text-lg font-bold mb-4">Resultados da Busca</h3><div id="search-results-list" class="space-y-3"></div><div class="flex justify-end mt-6"><button type="button" class="modal-close-button secondary-button">Fechar</button></div></div></div>
-    <div id="create-community-modal" class="modal-overlay hidden"><div class="modal-content"><h3 class="text-lg font-bold mb-4">Criar Nova Comunidade</h3><form id="create-community-form"><div class="mb-4"><label for="community-name" class="block text-sm font-medium text-gray-700">Nome da Comunidade</label><input type="text" id="community-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" required></div><div class="mb-4"><label for="community-desc" class="block text-sm font-medium text-gray-700">Descrição</label><textarea id="community-desc" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"></textarea></div><div class="flex justify-end gap-3 mt-6"><button type="button" class="modal-close-button secondary-button">Cancelar</button><button type="submit" class="primary-button">Criar</button></div></form></div></div>
-    <div id="invite-community-modal" class="modal-overlay hidden"><div class="modal-content"><h3 class="text-lg font-bold mb-4">Convidar para Comunidade</h3><div id="invite-list" class="space-y-3"></div><div class="flex justify-end mt-6"><button type="button" class="modal-close-button secondary-button">Fechar</button></div></div></div>
+    <div id="edit-profile-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 class="text-lg font-bold mb-4">Editar Perfil</h3>
+            <form id="edit-profile-form">
+                <div class="mb-4">
+                    <label for="edit-name" class="block text-sm font-medium text-gray-700">Nome</label>
+                    <input type="text" id="edit-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-avatar" class="block text-sm font-medium text-gray-700">URL do Avatar</label>
+                    <input type="text" id="edit-avatar" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-red-500 focus:border-red-500">
+                </div>
+                <div class="mb-4">
+                    <label for="edit-bio" class="block text-sm font-medium text-gray-700">Bio</label>
+                    <textarea id="edit-bio" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" class="modal-close-button secondary-button">Cancelar</button>
+                    <button type="submit" class="primary-button">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="search-results-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 class="text-lg font-bold mb-4">Resultados da Busca</h3>
+            <div id="search-results-list" class="space-y-3"></div>
+            <div class="flex justify-end mt-6">
+                <button type="button" class="modal-close-button secondary-button">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="create-community-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 class="text-lg font-bold mb-4">Criar Nova Comunidade</h3>
+            <form id="create-community-form">
+                <div class="mb-4">
+                    <label for="community-name" class="block text-sm font-medium text-gray-700">Nome da Comunidade</label>
+                    <input type="text" id="community-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3" required>
+                </div>
+                <div class="mb-4">
+                    <label for="community-desc" class="block text-sm font-medium text-gray-700">Descrição</label>
+                    <textarea id="community-desc" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3"></textarea>
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" class="modal-close-button secondary-button">Cancelar</button>
+                    <button type="submit" class="primary-button">Criar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="invite-community-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h3 class="text-lg font-bold mb-4">Convidar para Comunidade</h3>
+            <div id="invite-list" class="space-y-3"></div>
+            <div class="flex justify-end mt-6">
+                <button type="button" class="modal-close-button secondary-button">Fechar</button>
+            </div>
+        </div>
+    </div>
+
     <div id="settings-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <h3 class="text-lg font-bold mb-4">Configurações</h3>
@@ -180,6 +276,6 @@
     </div>
 
     <script type="module" src="script.js"></script>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
